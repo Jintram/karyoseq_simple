@@ -1,10 +1,29 @@
 #!/bin/bash
 
-# input parameters for calling the script
-# note: usually, you'd use $1, $2, but the sbatch commands doesn't handle that well, 
-# so I use the --export=ALL,... option.
+
 A=$sample_name #"Hesther-de-Ruiter-sample-2" # sample identification
 READLENGTH=$read_length
+nr_cores=$nr_cores
+# use_mem=$use_mem
+
+echo "running with $nr_cores cores"
+
+# For a test-run, use:
+#
+# file=XXX
+# head -n 1000 $file > head_$file
+# A=head_${file}
+
+datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/fastq/
+mappeddatadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/mappeddata/
+
+bwadir=/hpc/hub_oudenaarden/mwehrens/bin/miniconda3/bin/ 
+genomedir=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/
+scriptdir=/hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/
+
+
+
+
 
 
 #generates text file from sam file
