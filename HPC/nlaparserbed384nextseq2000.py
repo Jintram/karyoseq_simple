@@ -4,8 +4,12 @@ E=open(sys.argv[1], 'r')
 F=open(sys.argv[1]+'_Rnla.out', 'w')
 G=open(sys.argv[1]+'nla.stat', 'w')
 
+bc_filepath = sys.argv[2]
+
+read_length = int(sys.argv[3])
+
 #barcode file
-A=open('/hpc/hub_kops/NLAIII384barcodes.txt', 'r')
+A=open(bc_filepath, 'r')
 D={}
 counter=0
 for x in A:
@@ -38,17 +42,17 @@ for x in E:
 				if flag == '16':
 					flag = "-"	
 					
-				print repeat
-				print bc
-				print D[bc]
-				print match	
+				print(repeat)
+				print(bc)
+				print(D[bc])
+				print(match)
 				if repeat=='XT:A:U' and bc in D.keys() and match=='90M' or '89M':
-					F.write(chrom[3:]+'\t'+str(pos)+'\t'+str(int(pos) + 89)+'\t'+name+'\t'+str(mapq)+'\t'+flag+'\t'+umi+'\t'+str(D[bc])+'\n')
+					F.write(chrom[3:]+'\t'+str(pos)+'\t'+str(int(pos) + read_length - 11)+'\t'+name+'\t'+str(mapq)+'\t'+flag+'\t'+umi+'\t'+str(D[bc])+'\n')
 
 			else:
 				nomap+=1
 		except:
-			print 'error'	
+			print('error')
 
 G.write('total reads ='+'\t'+str(yesmap+nomap)+'\n'+'mapped reads ='+'\t'+str(yesmap)+'\n'+'unmapped reads ='+'\t'+str(nomap)+'\n')
 

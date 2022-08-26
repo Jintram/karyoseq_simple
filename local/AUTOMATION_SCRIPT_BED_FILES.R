@@ -1,11 +1,11 @@
 ### AneuFinder automation script ###
-setwd("~/Documents/aneufinder test/")
+setwd("/Users/m.wehrens/Data_notbacked/karyoseq/20220824_hesther/mappeddata/")
 library(AneuFinder)
-library(BSgenome.Hsapiens.UCSC.hg38)
+library(BSgenome.Hsapiens.UCSC.hg38) # BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
 
 # modify project name and bam-file directory
-projectName <- "Henk"
-bamDirectory <- "run50_tbid_core"
+projectName <- "Test1234_MW"
+bamDirectory <- "run43_head_Hesther-de-Ruiter"
 
 # set configuration file (mouse or human (GRCh37 or GRCh38))
 #configFile <- "aneufinder_mouse.config"
