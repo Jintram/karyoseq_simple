@@ -14,6 +14,8 @@ READLENGTH=$read_length
 nr_cores=$nr_cores
 # use_mem=$use_mem
 
+echo "running with $nr_cores cores"
+
 # For a test-run, use:
 #
 # file=XXX
