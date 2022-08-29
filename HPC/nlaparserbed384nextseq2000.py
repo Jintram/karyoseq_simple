@@ -42,10 +42,10 @@ for x in E:
 				if flag == '16':
 					flag = "-"	
 					
-				print(repeat)
-				print(bc)
-				print(D[bc])
-				print(match)
+				#print(repeat)
+				#print(bc)
+				#print(D[bc])
+				#print(match)
 				if repeat=='XT:A:U' and bc in D.keys() and match=='90M' or '89M':
 					F.write(chrom[3:]+'\t'+str(pos)+'\t'+str(int(pos) + read_length - 11)+'\t'+name+'\t'+str(mapq)+'\t'+flag+'\t'+umi+'\t'+str(D[bc])+'\n')
 
