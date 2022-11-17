@@ -1,33 +1,38 @@
+
 ### AneuFinder automation script ###
-setwd("/Users/m.wehrens/Data_notbacked/karyoseq/20220824_hesther/mappeddata/")
+
+
+# Set up the configuration parameters for this dataset.
+if (F) {
+    source('/Users/m.wehrens/Documents/git_repos/Karyoseq/local/projects/conf-mw_dataset-Hesther202211.R')
+    # note that the file "conf-mw_dataset-Hesther202208.R" might not work perfectly any more, as I changed some things after using that code
+}
+
+
+# Load libraries
 library(AneuFinder)
 library(BSgenome.Hsapiens.UCSC.hg38) # BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
 
-# modify project name and bam-file directory
-projectName <- "Test1234_MW"
-bamDirectory <- "run43_mw2_Hesther-de-Ruiter"
 
-# set configuration file (mouse or human (GRCh37 or GRCh38))
-#configFile <- "aneufinder_mouse.config"
-configFile <- "aneufinder_human1.config"
-#configFile <- "aneufinder_human_hg38.config"
-
-### RUN FROM HERE ###
+setwd(maindir)
 
 # generates novel directories from bam-file directory to store analysis files
-inputdirs <- list.dirs(bamDirectory, recursive = F)
-# outputdirs <- list.dirs(bamDirectory, full.names = F, recursive = F)
-outputdirs <- paste0(bamDirectory, " output/", outputdirs)
+input_beddirs <- list.dirs(paste0(maindir, bedDirectory), recursive = F, full.names = F)
+inputdirs <- paste0(maindir, bedDirectory, '/', input_beddirs)
+outputdirs <- paste0(maindir, bedDirectory, '_aneuoutput/', input_beddirs)
 
-dir.create(path = paste0(bamDirectory, " output"))
+dir.create(path = paste0(bedDirectory, "_aneuoutput"))
 for(i in 1:length(outputdirs)) {
-  dir.create(path =  outputdirs[i])
+  dir.create(path =  paste0(outputdirs[i]))
 }
 
 hg38 <- read.table('/Users/m.wehrens/Documents/git_repos/Karyoseq/local/hg38.chrom.sizes.txt', header = TRUE)
 
 # iterates through bam-file directories and analyses results
 for(i in 1:length(inputdirs)) {
+    
+  # i=3
+    
   Aneufinder(inputfolder = inputdirs[i],
              outputfolder = outputdirs[i], 
              assembly = hg38,
