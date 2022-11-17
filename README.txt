@@ -24,9 +24,10 @@ and a .bed extension; e.g. file named "52" to "bulk_52.bed" -- not that you can
 select multiple files on a macbook for multiple file renaming.
 
 Create a folder structure like this:
-../karyoseq/20221117_sapmleid/library1
-../karyoseq/20221117_sapmleid/library2
-../karyoseq/20221117_sapmleid/library3
+../karyoseq/20221117_expid/library1
+../karyoseq/20221117_expid/library2
+../karyoseq/20221117_expid/library3
+(multiple libraries -- ie different rpx primers -- coming from one experiment).
 
 Where library folders should *only* contain .bed files.
 
