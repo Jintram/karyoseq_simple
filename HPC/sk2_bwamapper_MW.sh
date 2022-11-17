@@ -12,6 +12,7 @@
 A=$sample_name #"Hesther-de-Ruiter-sample-2" # sample identification
 READLENGTH=$read_length
 nr_cores=$nr_cores
+subdir=$subdir
 # use_mem=$use_mem
 
 echo "running with $nr_cores cores"
@@ -22,8 +23,8 @@ echo "running with $nr_cores cores"
 # head -n 1000 $file > head_$file
 # A=head_${file}
 
-datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/fastq/
-mappeddatadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/mappeddata/
+datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/${subdir}/fastq/
+mappeddatadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/${subdir}/mappeddata/
 
 bwadir=/hpc/hub_oudenaarden/mwehrens/bin/miniconda3/bin/ 
 genomedir=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/

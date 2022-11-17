@@ -5,7 +5,7 @@ library(BSgenome.Hsapiens.UCSC.hg38) # BiocManager::install("BSgenome.Hsapiens.U
 
 # modify project name and bam-file directory
 projectName <- "Test1234_MW"
-bamDirectory <- "run43_head_Hesther-de-Ruiter"
+bamDirectory <- "run43_mw2_Hesther-de-Ruiter"
 
 # set configuration file (mouse or human (GRCh37 or GRCh38))
 #configFile <- "aneufinder_mouse.config"
@@ -16,15 +16,15 @@ configFile <- "aneufinder_human1.config"
 
 # generates novel directories from bam-file directory to store analysis files
 inputdirs <- list.dirs(bamDirectory, recursive = F)
-outputdirs <- list.dirs(bamDirectory, full.names = F, recursive = F)
-outputdirs <- paste0("run50_tbid_core output/", outputdirs)
+# outputdirs <- list.dirs(bamDirectory, full.names = F, recursive = F)
+outputdirs <- paste0(bamDirectory, " output/", outputdirs)
 
-dir.create(path = "run50_tbid_core output")
+dir.create(path = paste0(bamDirectory, " output"))
 for(i in 1:length(outputdirs)) {
   dir.create(path =  outputdirs[i])
 }
 
-hg38 <- read.table("hg38.chrom.sizes.txt", header = TRUE)
+hg38 <- read.table('/Users/m.wehrens/Documents/git_repos/Karyoseq/local/hg38.chrom.sizes.txt', header = TRUE)
 
 # iterates through bam-file directories and analyses results
 for(i in 1:length(inputdirs)) {
