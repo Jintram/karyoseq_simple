@@ -50,7 +50,8 @@ ${bwadir}bwa samse ${genomedir}GRCh38.p10.genome.clean.fa $A-output/$A-R1.sai *$
   # l = seed length; note that 200 is pretty high (>query; makes long read slow pro'lly), 25-30 'typical'
   # t = number of threads (!!) [originally set at 4]
   # B = Length of barcode starting from the 5’-end.
-
+  # See also:
+  # https://bio-bwa.sourceforge.net/bwa.shtml
 
 # Wanted to implement bwa mem, but that doesn't allow for the "B" option;
 # would be neater, but involves re-writing the workflow as trimming needs
