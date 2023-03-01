@@ -46,9 +46,7 @@ sbatch --dependency=afterany:${last_jobid} --job-name=karyho2o --time=6-00:00:00
 ## Notes about script locations
 
 Currenly, I have run these scripts on the HPC in my personal directory,
-and therefor the following paths are defined in the 
-
-scripts
+and therefor the following paths are defined in the `sk2_bwamapper_MW.sh` and `sk2_parser_MW.sh` scripts
 
 ```
 datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/fastq/
