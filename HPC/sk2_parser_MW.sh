@@ -14,17 +14,13 @@ echo "running with $nr_cores cores"
 # head -n 1000 $file > head_$file
 # A=head_${file}
 
-datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/fastq/
-mappeddatadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/mappeddata/
+datadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/fastq/${subdir}
+mappeddatadir=/hpc/hub_oudenaarden/mwehrens/data/karyoseq/mappeddata/${subdir}
 
 bwadir=/hpc/hub_oudenaarden/mwehrens/bin/miniconda3/bin/ 
-genomedir=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/
 scriptdir=/hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/
 
-
-
-
-
+cd $datadir
 
 #generates text file from sam file
 python ${scriptdir}nlaparserbed384nextseq2000.py $A-output/$A-R1.sam ${scriptdir}NLAIII384barcodes.txt $READLENGTH
