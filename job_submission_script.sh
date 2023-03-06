@@ -28,31 +28,33 @@
 
 sample_name=Sample-Hesther-de-Ruiter-index2_AACJNTKM5_S2
 subdir=2023_03/
-genome_path=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/mm10.fa
+genomepath=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/mm10.fa
 read_length=101
 use_mem=no
 nr_cores=16
 # mapping with multiple cores:
-last_jobid=$(sbatch  --parsable --job-name=karyhoho --time=6-00:00:00 -c ${nr_cores} --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genome_path="${genome_path}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_bwamapper_MW.sh)
+last_jobid=$(sbatch  --parsable --job-name=karyhoho --time=6-00:00:00 -c ${nr_cores} --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}",subdir="${subdir}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_bwamapper_MW.sh)
 # parsing with 1 core:
-sbatch --dependency=afterany:${last_jobid} --job-name=karyho2o --time=6-00:00:00 --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genome_path="${genome_path}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_parser_MW.sh
+sbatch --dependency=afterany:${last_jobid} --job-name=karyho2o --time=6-00:00:00 --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}",subdir="${subdir}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_parser_MW.sh
+# sbatch --job-name=karyho2o --time=6-00:00:00 --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}",subdir="${subdir}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_parser_MW.sh
 
+# sbatch --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}",subdir="${subdir}" ./testscript.sh
 
 ################################################################################
 
-# Note: I later added the "genome_path" option; the code below
+# Note: I later added the "genomepath" option; the code below
 # didn't have that option, I added it here, but code was originally run
 # differently (though shouldn't matter).
 
-genome_path=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/GRCh38.p10.genome.clean.fa
+genomepath=/hpc/hub_oudenaarden/mwehrens/ref/karyoseq/GRCh38.p10.genome.clean.fa
 sample_name=Hesther-de-Ruiter-sample-1
 read_length=150
 use_mem=no
 nr_cores=16
 # mapping with multiple cores:
-last_jobid=$(sbatch  --parsable --job-name=karyhoho --time=6-00:00:00 -c ${nr_cores} --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genome_path="${genome_path}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_bwamapper_MW.sh)
+last_jobid=$(sbatch  --parsable --job-name=karyhoho --time=6-00:00:00 -c ${nr_cores} --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_bwamapper_MW.sh)
 # parsing with 1 core:
-sbatch --dependency=afterany:${last_jobid} --job-name=karyho2o --time=6-00:00:00 --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genome_path="${genome_path}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_parser_MW.sh
+sbatch --dependency=afterany:${last_jobid} --job-name=karyho2o --time=6-00:00:00 --mem=15G --export=ALL,sample_name="${sample_name}",read_length="${read_length}",nr_cores="${nr_cores}",use_mem="${use_mem}",genomepath="${genomepath}" /hpc/hub_oudenaarden/mwehrens/scripts/karyoseq_scripts/sk2_parser_MW.sh
 
 sample_name=Hesther-de-Ruiter-sample-2
 read_length=150

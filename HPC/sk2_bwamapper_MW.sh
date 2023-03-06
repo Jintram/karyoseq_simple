@@ -20,6 +20,7 @@ subdir=$subdir
 genomepath=$genomepath # /hpc/hub_oudenaarden/mwehrens/ref/karyoseq/GRCh38.p10.genome.clean.fa
 # use_mem=$use_mem
 
+echo "Sample: $A"
 echo "running with $nr_cores cores"
 
 # For a test-run, use:
